@@ -1,17 +1,16 @@
-name: Run checker on macOS
+name: Brute-force flag on macOS
 
-on: [push, workflow_dispatch]
+on: [workflow_dispatch]
 
 jobs:
-  run-checker:
+  brute:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Show system info
-        run: uname -a
+      - name: Make checker executable
+        run: chmod +x checker
 
-      - name: Run checker with test flag
-        run: |
-          chmod +x checker
-          ./checker "BHFlagY{AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA}"
+      - name: Run brute-force script
+        run: python3 check.py
+
