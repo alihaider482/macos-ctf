@@ -1,0 +1,17 @@
+name: Run checker on macOS
+
+on: [push, workflow_dispatch]
+
+jobs:
+  run-checker:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Show system info
+        run: uname -a
+
+      - name: Run checker with test flag
+        run: |
+          chmod +x checker
+          ./checker "BHFlagY{AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA}"
